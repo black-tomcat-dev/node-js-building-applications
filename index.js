@@ -13,11 +13,10 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/cool', (request, response) => response.send(cool()))
   .get('/times', function(request, response){
-    var id = process.env.MONGOLAB_URI
-    // var result = '';
-    // var times = process.env.TIMES || 5;    
-    // for (i=0; i < times; i++)
-    //   result += i + ' ';
-      response.send(id);
+    var result = '';
+    var times = process.env.TIMES || 5;    
+    for (i=0; i < times; i++)
+      result += i + ' ';
+      response.send(result);
     
   }).listen(PORT, () => console.log(`Listening on ${ PORT }`))
