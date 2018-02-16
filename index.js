@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
 }
 var db;
-var URL = "mongodb://heroku_r0r9vlsq:7aa12j2s02b19j1t320qagvm24@ds139138.mlab.com:39138/heroku_r0r9vlsq";
+var URL = process.env.MONGODB_URI;
 
 express()
   .use(express.static(path.join(__dirname, "public")))
