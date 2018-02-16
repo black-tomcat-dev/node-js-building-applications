@@ -12,6 +12,7 @@ express()
   .get('/times', function(request, response){
     var result = ''
     var times = process.env.TIMES || 5
+    console.log(process.env.TIMES);
     for (var i=0; i < times; i++){
       result += i + ' ';
       response.send(result);
