@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 5008;
+const PORT = process.env.PORT || 5000;
 
 var db;
 var URL = process.env.MONGODB_URI;
@@ -35,7 +35,7 @@ express()
       }
       db = database
       express().listen(3008, () => {
-        console.log("listening on 3001");
+        console.log("listening on 3000");
       });
     db.collection('users').find().toArray((err, result) => {
       if (err) return console.log(err)
