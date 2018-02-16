@@ -9,13 +9,11 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/cool', (request, response) => response.send(cool()))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
-  app.get('/times', function(request, response){
+  .get('/times', function(request, response){
     var result = ''
     var times = process.env.TIMES || 5
-    for (i=0; i < times; i++){
+    for (var i=0; i < times; i++){
       result += i + ' ';
       response.send(result);
     }
-  })
+  }).listen(PORT, () => console.log(`Listening on ${ PORT }`))
