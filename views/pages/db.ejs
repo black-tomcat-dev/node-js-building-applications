@@ -13,7 +13,9 @@
 
 <ul>
     <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
+        <li><%= r._id %> - <%= r.name %></li>
+        <li><%= r.email %></li>
+        <li><%= r.age %></li>
     <% }); %>
 </ul>
 

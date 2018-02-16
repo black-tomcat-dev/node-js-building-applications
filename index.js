@@ -1,22 +1,50 @@
-var cool = require('cool-ascii-faces');
-const express = require('express');
-const path = require('path');
+var mongodb = require("mongodb");
+var cool = require("cool-ascii-faces");
+
+const bodyParser = require("body-parser");
+
+const express = require("express");
+const path = require("path");
 const PORT = process.env.PORT || 5000;
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").load();
 }
+var db;
+var URL = "mongodb://heroku_r0r9vlsq:7aa12j2s02b19j1t320qagvm24@ds139138.mlab.com:39138/heroku_r0r9vlsq";
 
 express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .get('/cool', (request, response) => response.send(cool()))
-  .get('/times', function(request, response){
-    var result = '';
-    var times = process.env.TIMES || 5;    
-    for (i=0; i < times; i++)
-      result += i + ' ';
-      response.send(result);
+  .use(express.static(path.join(__dirname, "public")))
+  .set("views", path.join(__dirname, "views"))
+  .set("view engine", "ejs")
+  .engine('html', require('ejs').renderFile)
+  .use(bodyParser.urlencoded({extended: true}))
+  .use(bodyParser.json())
+  .use(express.static('public'))
+  .get("/", (req, res) => res.render("pages/index"))
+  .get("/cool", (request, response) => response.send(cool()))
+  .get("/times", function(request, response) {
+    var result = "";
+    var times = process.env.TIMES || 5;
+    for (i = 0; i < times; i++) result += i + " ";
+    response.send(result);
+  })
+  .get("/testdb", function(request, response) {
+    mongodb.MongoClient.connect(URL, function(err, database) {
+      if (err) {
+        console.log("Unable to connect to the Server", err);
+      } else {
+        console.log("Connection established to", URL);
+      }
+      db = database
+      express().listen(3000, () => {
+        console.log("listening on 3000");
+      });
+    db.collection('users').find().toArray((err, result) => {
+      if (err) return console.log(err)
+        response.render("pages/db.ejs", {results: result})
+        db.close();
+      });
+    })
     
-  }).listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  }).listen(PORT, () => console.log(`Listening on ${PORT}`));
+
