@@ -34,8 +34,8 @@ express()
         console.log("Connection established to", URL);
       }
       db = database
-      express().listen(3000, () => {
-        console.log("listening on 3000");
+      express().listen(80, () => {
+        console.log("listening on 80");
       });
     db.collection('users').find().toArray((err, result) => {
       if (err) return console.log(err)
