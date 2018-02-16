@@ -6,7 +6,9 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
-
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").load();
+}
 var db;
 var URL = process.env.MONGODB_URI;
 
@@ -34,9 +36,9 @@ express()
         console.log("Connection established to", URL);
       }
       db = database
-      express().listen(3008, () => {
-        console.log("listening on 3000");
-      });
+      // express().listen(3000, () => {
+      //   console.log("listening on 3000");
+      // });
     db.collection('users').find().toArray((err, result) => {
       if (err) return console.log(err)
         response.render("pages/db.ejs", {results: result})
