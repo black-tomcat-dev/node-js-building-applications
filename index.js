@@ -21,6 +21,7 @@ express()
   .use(bodyParser.json())
   .use(express.static('public'))
   .get("/", (req, res) => res.render("pages/index"))
+  .get("/Module1", (req, res) => res.render("pages/quotes"))
   .get("/cool", (request, response) => response.send(cool()))
   .get("/times", function(request, response) {
     var result = "";
