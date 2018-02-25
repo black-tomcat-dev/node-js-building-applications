@@ -1,6 +1,7 @@
 var mongodb = require("mongodb");
 var cool = require("cool-ascii-faces");
 
+
 const bodyParser = require("body-parser");
 
 const express = require("express");
@@ -22,6 +23,29 @@ express()
   .use(express.static('public'))
   .get("/", (req, res) => res.render("pages/index"))
   .get("/Module1", (req, res) => res.render("pages/quotes"))
+  .get("/Module2/:city", function(req, res) {
+    var cityLabel = "";
+    var city = "";
+    if (req.params.city == "london"){
+      city = "london";
+      cityLabel = "London"
+    }else if (req.params.city == "paris"){
+      city = "paris";
+      cityLabel = "Paris"
+    }else if (req.params.city == "newyork"){
+      city = "newyork";
+      cityLabel = "New York"
+    }else if (req.params.city == "madrid"){
+      city = "madrid";
+      cityLabel = "Madrid"
+    }
+    // var cityURL = 
+    // "https://api.flickr.com/services/feeds/photos_public.gne?tags=" + cityLabel 
+    // + "&tagmode=any&format=json&jsoncallback=?"
+    res.render("pages/city", {City:city, 
+      Label:cityLabel});
+    
+  })
   .get("/cool", (request, response) => response.send(cool()))
   .get("/times", function(request, response) {
     var result = "";
