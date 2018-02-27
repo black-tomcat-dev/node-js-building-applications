@@ -14,8 +14,7 @@
           $.ajax({
             type: "GET",
             dataType: "jsonp",
-            url: "https://pixabay.com/api/?key=8158793-b6b28f3581a06e835f99844f5&q=" + city
-              + "&image_type=photo",
+            url: city,
             success: function (data) {
               data = $.map(data.hits, function (obj, index) {
                 return {

@@ -42,7 +42,9 @@ express()
     // var cityURL = 
     // "https://api.flickr.com/services/feeds/photos_public.gne?tags=" + cityLabel 
     // + "&tagmode=any&format=json&jsoncallback=?"
-    res.render("pages/city", {City:city, 
+    var cityURL = "https://pixabay.com/api/?key=8158793-b6b28f3581a06e835f99844f5&q=" + city
+    + "&image_type=photo"
+    res.render("pages/city", {City:cityURL, 
       Label:cityLabel});
     
   })
