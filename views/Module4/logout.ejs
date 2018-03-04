@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Logged out!</title>
+    <% include partials/header.ejs %>
+</head>
+
+<body>
+    <div class="container">
+        <% include partials/nav.ejs %>
+    </div>
+    <div id="wrapper">
+
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <br/>
+                <li class="sidebar-brand">
+                    <a class="brandFont" align="center" href="/Module4/">
+                        Home page
+                    </a>
+                </li>
+                <br/>
+
+                <div align="center">
+                    <img class="img-circle" src="/images/logo.png" />
+                </div>
+                <br/>
+
+                <li>
+                    <a class="menus" align="center" href="/Module4/stories">Stories</a>
+                </li>
+                <li>
+                    <a class="menus" align="center" href="/Module4/new-story">Share your own story</a>
+                </li>
+                <li>
+                    <a class="menus" align="center" href="/Module4/techStack">Tech stack</a>
+                </li>
+
+                <br/>
+                <br/>
+                <br/>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a type="button" href="/Module4/login" class="btn btn-primary btn-lg outline">Login</a>&nbsp;&nbsp;&nbsp;
+                    <a type="button" href="/Module4/register" class="btn btn-danger btn-lg outline">Sign Up</a>
+                </div>
+
+
+            </ul>
+        </div>
+
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <p align="center" class="headingFont">
+                            <a href="/Module4/">Home page </a>
+                        </p>
+                        <br/>
+                        <br/>
+                        <br/>
+
+                        <blockquote class="mainLines">
+                            <code><%=loggedOutUser%></code> you have been successfully logged out
+                            <br/> Please
+                            <a href="/Module4/login">login</a> to create your own story or just read other's
+                            <a href="/Module4/stories">stories</a>
+                        </blockquote>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

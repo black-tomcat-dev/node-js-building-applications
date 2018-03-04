@@ -1,0 +1,71 @@
+.headingFont{
+    font-family: kaushan-script, cursive;
+    font-size: 40px;
+}
+
+.brandFont{
+    font-family: kaushan-script, cursive;
+    font-size: 25px;
+}
+
+.mainLines{
+    font-size:30px;
+}
+.btn-success, .btn-success.active, .btn-success.focus, .btn-success:active, 
+.btn-success:focus, .btn-success:hover, .open>.dropdown-toggle.btn-success {
+    background: purple;
+    border-color: black;
+}
+
+.menus{
+    font-size:18px;
+}
+.sidebar-nav div ul{
+    list-style-type:none;
+    color: purple ;
+    margin-left: -35px;
+}
+.sidebar-nav div ul li a{
+    color: purple ;
+    text-decoration: underline;
+}
+blockquote > a{
+    color: purple;
+    text-decoration: underline;
+}
+#sidebar-wrapper{
+    list-style-type:none;
+    position: relative;
+    top: 80px;
+    margin-bottom: 100px;
+}
+.mainLines{
+    font-size: 1.45em !important;
+}
+@media (min-width: 768px) {
+    .sidebar-nav div{
+        margin-left: 20px;
+    }
+    #sidebar-wrapper{
+        list-style-type:none;
+      position:fixed;
+      top: 80px;
+      height: 100%;
+      overflow-y: auto;
+    }
+    #page-content-wrapper{
+        position: relative;
+        top: 80px;
+        left: 30%;
+        width: 95%;
+        height: 100%;
+        float:right;
+    }
+    .btn-success{
+        background: purple;
+    }
+    .btn-primary{
+        background: green;
+    }
+}
+

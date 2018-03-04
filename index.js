@@ -1,17 +1,23 @@
 var mongodb = require("mongodb");
 var cool = require("cool-ascii-faces");
-
-
 const bodyParser = require("body-parser");
-
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
+
+
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
 }
 var db;
 var URL = process.env.MONGODB_URI;
+
+//module 4
+var db=require('./models/db.js');
+var session=require('express-session');
+var user=require('./routes/user.js');
+var story=require('./routes/story.js');
+var routes=require('./routes/route.js');
 
 express()
   .use(express.static(path.join(__dirname, "public")))
@@ -21,6 +27,20 @@ express()
   .use(bodyParser.urlencoded({extended: true}))
   .use(bodyParser.json())
   .use(express.static('public'))
+  .use(session({secret:"qazwsxedcrfvtgbyhnujm123qa5fryz",resave: true, saveUninitialized: true}))
+  .get('/Module4',routes.index)
+  .get('/Module4/stories',story.stories)
+  .get('/Module4/register',routes.register)
+  .post('/Module4/newUser',user.doCreate)
+  .get('/Module4/registrationSuccessful',user.registrationSuccessful)
+  .get('/Module4/login',routes.login)
+  .post('/Module4/authenticate',user.login)
+  .get('/Module4/new-story',routes.newStory)
+  .post('/Module4/add-story',story.addStory)
+  .get('/Module4/stories/:story',story.getStory)
+  .post('/Module4/stories/:slug/saveComment',story.saveComment)
+  .get('/Module4/techStack',routes.techStack)
+  .get('/Module4/logout',user.logout)
   .get("/", (req, res) => res.render("pages/index"))
   .get("/Module1", (req, res) => res.render("pages/quotes"))
   .get("/Module2/:city", function(req, res) {
@@ -48,6 +68,7 @@ express()
       Label:cityLabel});
     
   })
+  .get("/Module3", (req, res) => res.render("pages/module3"))
   .get("/cool", (request, response) => response.send(cool()))
   .get("/times", function(request, response) {
     var result = "";
@@ -73,5 +94,6 @@ express()
       });
     })
     
-  }).listen(PORT, () => console.log(`Listening on ${PORT}`));
+  }).listen(PORT, () => console.log(`Listening on ${PORT}`))
+
 

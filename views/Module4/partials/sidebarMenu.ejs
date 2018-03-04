@@ -1,0 +1,42 @@
+<div class="col-sm-3" id="sidebar-wrapper">
+    <div class="sidebar-nav">
+        <div align="center">
+            <br/>
+            
+            <h3>Module 4: Learning about putting a full website together using MEaN stack
+            </h3>
+            <br/>
+            <img class="img-circle" src="/images/story-writing.jpg" width="200" height="200" />
+
+            <br/>
+            <br/>
+            <br/>
+            <ul>
+                <li>
+                    <a class="menus" align="center" href="/Module4/stories">Stories</a>
+                </li>
+                <li>
+                    <a class="menus" align="center" href="/Module4/new-story">Share your own story</a>
+                </li>
+                <li>
+                    <a class="menus" align="center" href="/Module4/techStack">Tech stack</a>
+                </li>
+            </ul>
+
+
+            <br/>
+            <br/>
+            <br/>
+            <% if( typeof(session.loggedIn) == 'undefined' ) {%>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a type="button" href="/Module4/login" class="btn btn-primary btn-lg outline">Login</a>&nbsp;&nbsp;&nbsp;
+                    <a type="button" href="/Module4/register" class="btn btn-success btn-lg outline">Sign Up</a>
+                </div>
+                <%} else{%>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a type="button" align="center" href="/Module4/logout" class="btn btn-danger btn-lg outline">Logout</a>&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <%}%>
+        </div>
+    </div>
+</div>

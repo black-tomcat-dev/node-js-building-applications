@@ -74,6 +74,23 @@ $(document).ready(function() {
                   .fadeIn("slow");
                 next();
               });
+
+            $(".modules")
+            .delay(1500)
+            .queue(function(next){
+              $(".modules").append( 
+                "<li><strong>Module 3</strong>: We learnt about EJS now implemented in jade and handlebars and posted to Github</a></li>"
+              ).fadeIn("slow");
+              next();
+            });
+            $(".modules")
+            .delay(1500)
+            .queue(function(next){
+              $(".modules").append( 
+                "<li><strong>Module 4 & 5</strong>: Create a Signup and Login page and post stories and comments implemented with MongoDB</a></li>"
+              ).fadeIn("slow");
+              next();
+            });
             /**<li><a href="/Module2">Module 2: Learning about express and also external API</a></li>
             <li><a href="/Module3">Module 3: We learnt about EJS now implement in jade and handlebars</a></li>
             <li><a href="/Module4">Module 4: Create a Signup and Login page</a></li>
