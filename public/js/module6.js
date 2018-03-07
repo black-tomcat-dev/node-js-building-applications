@@ -33,8 +33,8 @@ $(document).ready(function(){
     });
     
     jQuery(function ($) {
-        var port_ = window.location.port
-        var socket = io.connect("localhost:"+port_);
+        var port_ = window.location.port;
+        var socket = io.connect("https://edureka-nodejs-feb18.herokuapp.com:"+port_);
         var $messageForm = $('#message-box');
         var $messageBox = $('#message');
         var $chat = $('#chat');
