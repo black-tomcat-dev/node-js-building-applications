@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
 }
 var db;
-// var URL = process.env.MONGODB_URI;
+var URL = process.env.MONGODB_URI;
 
 //module 4
 var db=require('./models/db.js');
