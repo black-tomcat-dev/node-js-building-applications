@@ -33,7 +33,7 @@ $(document).ready(function(){
     });
     
     jQuery(function ($) {
-        var socket = io.connect('localhost:4000');
+        var socket = io.connect('ws://edureka-nodejs-feb18.herokuapp.com/:4000');
         var $messageForm = $('#message-box');
         var $messageBox = $('#message');
         var $chat = $('#chat');
