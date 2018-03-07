@@ -33,7 +33,8 @@ $(document).ready(function(){
     });
     
     jQuery(function ($) {
-        var socket = io.connect();
+        var port_ = window.location.port
+        var socket = io.connect("localhost:"+port_);
         var $messageForm = $('#message-box');
         var $messageBox = $('#message');
         var $chat = $('#chat');

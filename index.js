@@ -9,8 +9,7 @@ var app = express();
 users = {};
 var server=require('http').createServer(app);
 var io=require('socket.io').listen(server);
-io.set('origins', '*:*');
-io.set('match origin protocol', true);
+
   // app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 server.listen(8080,() => console.log('Server running on port 7210'));
 
