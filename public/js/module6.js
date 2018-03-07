@@ -33,7 +33,7 @@ $(document).ready(function(){
     });
     
     jQuery(function ($) {
-        var socket = io.connect('https://edureka-nodejs-feb18.herokuapp.com:7210');
+        var socket = io.connect('/');
         var $messageForm = $('#message-box');
         var $messageBox = $('#message');
         var $chat = $('#chat');
