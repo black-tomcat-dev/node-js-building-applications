@@ -158,110 +158,113 @@
     <script type="text/javascript" src="js/module6.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
-        $(document).ready(function(){
-          jQuery(function ($) {
-              var port_ = window.location.port;
-              var socket = io();
-              var $messageForm = $('#message-box');
-              var $messageBox = $('#message');
-              var $chat = $('#chat');
+        // $(document).ready(function(){
+        //   jQuery(function ($) {
+        //       var port_ = window.location.port;
+        //       // var HOST = location.origin.replace(/^http/, 'ws');
+        //       // var socket = new WebSocket(HOST);
+        //       var socket = new WebSocket('ws://localhost:40510');
+        //       var $messageForm = $('#message-box');
+        //       var $messageBox = $('#message');
+        //       var $chat = $('#chat');
           
-              var chatOuter = $('#chatWrap');
-              var chatInner = $('#chat');
+        //       var chatOuter = $('#chatWrap');
+        //       var chatInner = $('#chat');
           
-              var $users = $('#users');
-              var $nickForm = $('#setNick');
-              var $nickError = $('#nickError');
-              var $nickBox = $('#nickname');
-              var title = 'anonymous';
+        //       var $users = $('#users');
+        //       var $nickForm = $('#setNick');
+        //       var $nickError = $('#nickError');
+        //       var $nickBox = $('#nickname');
+        //       var title = 'anonymous';
              
           
-              $('#message').on("submit", function () {
-                      console.log("clicked");
-                  });
+        //       $('#message').on("submit", function () {
+        //               console.log("clicked");
+        //           });
           
           
-              $nickForm.submit(function (e) {
-                  console.log("clicked");
-                  e.preventDefault();
-                  title = $nickBox.val();
-                  socket.emit('new user', $nickBox.val(), function (data) {
-                      if (data) {
-                          $('#nickWrap').hide();
-                          document.title = title;
-                          $('#chatWindow').show();
-                          $(".panel-footer").show();
-                      } else {
-                          $nickError.html("Sorry, that nickname is already taken , try something else");
-                          $('#nickWrap').show();
-                          $('#chatWindow').hide();
-                          $(".panel-footer").hide();
-                      }
-                  });
-                  $nickBox.val('');
-              });
+        //       $nickForm.submit(function (e) {
+        //           console.log("clicked");
+        //           e.preventDefault();
+        //           title = $nickBox.val();
+        //           socket.onmessage function (data) {
+        //               if (data) {
+        //                   $('#nickWrap').hide();
+        //                   document.title = title;
+        //                   $('#chatWindow').show();
+        //                   $(".panel-footer").show();
+        //               } else {
+        //                   $nickError.html("Sorry, that nickname is already taken , try something else");
+        //                   $('#nickWrap').show();
+        //                   $('#chatWindow').hide();
+        //                   $(".panel-footer").hide();
+        //               }
+        //           });
+        //           $nickBox.val('');
+        //       });
           
-              // socket.on('usernames', function (data) {
-              //     var html = '<ul>';
-              //     for (i = 0; i < data.length; i++) {
-              //         html += '<li><span>' + data[i] + '</span></li>';
-              //     }
-              //     html = html + '</ul>';
-              //     $users.html(html);
-              // });
+        //       // socket.on('usernames', function (data) {
+        //       //     var html = '<ul>';
+        //       //     for (i = 0; i < data.length; i++) {
+        //       //         html += '<li><span>' + data[i] + '</span></li>';
+        //       //     }
+        //       //     html = html + '</ul>';
+        //       //     $users.html(html);
+        //       // });
           
           
           
-              $messageForm.submit(function (e) {
-                  e.preventDefault();
-                  var min = new Date().getMinutes();
-                  var hrs = new Date().getHours();
-                  var time = hrs + ":" + min;
-                  socket.emit('send message', $messageBox.val(), function (data) {
-                      $chat.append("<div class='row msg_container base_sent'><div class='col-md-10 col-xs-10'><div class='messages msg_sent'><p>" + data.msg 
-                      + "</p><time datetime='" + time + "'>"+ data.nick + ", " + time + "</time></div></div><div class='col-md-2 col-xs-2 avatar'>"
-                      + "<img src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg' class='img-responsive'></div></div>");
-                  });
-                  $messageBox.val('');
-              });
+        //       $messageForm.submit(function (e) {
+        //           e.preventDefault();
+        //           var min = new Date().getMinutes();
+        //           var hrs = new Date().getHours();
+        //           var time = hrs + ":" + min;
+        //           socket.onmessage = function (data) {
+        //             // $messageBox.val()
+        //               $chat.append("<div class='row msg_container base_sent'><div class='col-md-10 col-xs-10'><div class='messages msg_sent'><p>" + data.msg 
+        //               + "</p><time datetime='" + time + "'>"+ data.nick + ", " + time + "</time></div></div><div class='col-md-2 col-xs-2 avatar'>"
+        //               + "<img src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg' class='img-responsive'></div></div>");
+        //           });
+        //           $messageBox.val('');
+        //       });
           
-              socket.on('new message', function (data) {
-                  var min = new Date().getMinutes();
-                  var hrs = new Date().getHours();
-                  var time = hrs + ":" + min;
-                  console.log(data);
-                  if (data.nick === title) {
-                      $chat.append("<div class='row msg_container base_sent'>"
-                      + "<div class='col-md-10 col-xs-10'><div class='messages msg_sent'><p>" + data.msg 
-                      + "</p><time datetime='" + time + "'>"+ data.nick + ", " + time + "</time></div></div><div class='col-md-2 col-xs-2 avatar'>"
-                      + "<img src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg' class='img-responsive'></div></div>");
+        //       socket.onmessage = function (data) {
+        //           var min = new Date().getMinutes();
+        //           var hrs = new Date().getHours();
+        //           var time = hrs + ":" + min;
+        //           console.log(data);
+        //           if (data.nick === title) {
+        //               $chat.append("<div class='row msg_container base_sent'>"
+        //               + "<div class='col-md-10 col-xs-10'><div class='messages msg_sent'><p>" + data.msg 
+        //               + "</p><time datetime='" + time + "'>"+ data.nick + ", " + time + "</time></div></div><div class='col-md-2 col-xs-2 avatar'>"
+        //               + "<img src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg' class='img-responsive'></div></div>");
                     
-                  } else {
-                      $chat.append("<div class='row msg_container base_recieve'><div class='col-md-2 col-xs-2 avatar'><img src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg' class='img-responsive'>"
-                      + "</div><div class='col-md-10 col-xs-10'><div class='messages msg_recieve'><p>" + data.msg  + "</p><time datetime='" + time + "'>"+ data.nick + ", " + time 
-                      + "</time></div></div>");
-                  }
-                  scrollCorrect();
-              });
+        //           } else {
+        //               $chat.append("<div class='row msg_container base_recieve'><div class='col-md-2 col-xs-2 avatar'><img src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg' class='img-responsive'>"
+        //               + "</div><div class='col-md-10 col-xs-10'><div class='messages msg_recieve'><p>" + data.msg  + "</p><time datetime='" + time + "'>"+ data.nick + ", " + time 
+        //               + "</time></div></div>");
+        //           }
+        //           scrollCorrect();
+        //         }
           
           
           
-              // socket.on('whisper', function (data) {
-              //     $chat.append("<p align='left' class='whisper'><b>&nbsp;&nbsp;&nbsp;" + data.nick + " : </b>" + data.msg + "</p><br/>");
+        //       // socket.on('whisper', function (data) {
+        //       //     $chat.append("<p align='left' class='whisper'><b>&nbsp;&nbsp;&nbsp;" + data.nick + " : </b>" + data.msg + "</p><br/>");
           
-              // });
+        //       // });
           
-              // socket.on('private', function (data) {
-              //     $chat.append("<p align='right' class='whisper'><b>" + title + "@" + data.nick + ": </b>" + data.msg + "&nbsp;&nbsp;</p><br/>");
+        //       // socket.on('private', function (data) {
+        //       //     $chat.append("<p align='right' class='whisper'><b>" + title + "@" + data.nick + ": </b>" + data.msg + "&nbsp;&nbsp;</p><br/>");
           
-              // });
+        //       // });
           
           
-              function scrollCorrect() {
-                  chatOuter.scrollTop(chatInner.outerHeight());
-              }
-          });
-        });
+        //       function scrollCorrect() {
+        //           chatOuter.scrollTop(chatInner.outerHeight());
+        //       }
+        //   });
+        // });
       </script>
 </body>
 
