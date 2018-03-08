@@ -8,7 +8,8 @@ var app = express();
 /** socket io */
 users = {};
 var server=require('http').createServer(app);
-var io=require('socket.io').listen(server);
+var socketIO =require('socket.io');
+const io = socketIO(server);
 
   // app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 server.listen(8080,() => console.log('Server running on port 8080'));
@@ -108,7 +109,7 @@ var routes=require('./routes/route.js');
   })
 
 
-  io.sockets.on('connection',function(socket){
+  io.on('connection',function(socket){
 
     console.log("A New Connection Established");
 
@@ -127,7 +128,7 @@ var routes=require('./routes/route.js');
 
 
     function updateNicknames(){
-      io.sockets.emit('usernames',Object.keys(users));
+      io.emit('usernames',Object.keys(users));
     }
 
 
@@ -155,7 +156,7 @@ var routes=require('./routes/route.js');
 
       //  else{
        console.log("Got Message :"+data)
-       io.sockets.emit('new message',{msg:msg,nick:socket.nickname});
+      io.emit('new message',{msg:msg,nick:socket.nickname});
         //  }
     });
 
