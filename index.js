@@ -20,8 +20,8 @@ users = {};
 // });
 // socket = new io.Socket();
 
-  // app.listen(PORT, () => console.log(`Listening on ${PORT}`));
-app.listen(8080,() => console.log('Server running on port 8080'));
+  app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+// app.listen(8080 || PORT);
 
 
 
