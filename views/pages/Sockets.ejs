@@ -58,7 +58,7 @@
                   <input autocomplete="off" type="text" autofocus required placeholder="Enter your name" id="nickname" />
                 </form>
               </div>
-            </div>
+            
             <div id="chatWindow">
               <div id="chatWrap">
                 <div id="chat">
@@ -110,6 +110,7 @@
                   </div>
                 </div> -->
             </div>
+          
             <div class="panel-footer">
               <div class="input-group">
 
@@ -121,6 +122,7 @@
                 </form>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -224,7 +226,7 @@
                     // $messageBox.val()
                       $chat.append("<div class='row msg_container base_sent'><div class='col-md-10 col-xs-10'><div class='messages msg_sent'><p>" + data.msg 
                       + "</p><time datetime='" + time + "'>"+ data.nick + ", " + time + "</time></div></div><div class='col-md-2 col-xs-2 avatar'>"
-                      + "<img src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg' class='img-responsive'></div></div>");
+                      + "<img src='images/icon-user.png' class='img-responsive'></div></div>");
                   });
                   $messageBox.val('');
               });
@@ -241,7 +243,7 @@
                       $chat.append("<div class='row msg_container base_sent'>"
                       + "<div class='col-md-10 col-xs-10'><div class='messages msg_sent'><p>" + data.msg 
                       + "</p><time datetime='" + time + "'>"+ data.nick + ", " + time + "</time></div></div><div class='col-md-2 col-xs-2 avatar'>"
-                      + "<img src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg' class='img-responsive'></div></div>");
+                      + "<img src='images/icon-user.png' class='img-responsive'></div></div>");
                     
                   } else {
                       $chat.append("<div class='row msg_container base_recieve'><div class='col-md-2 col-xs-2 avatar'><img src='http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg' class='img-responsive'>"
