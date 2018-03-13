@@ -89,7 +89,7 @@ var routes=require('./routes/route.js');
     
   });
   app.get("/Module3", (req, res) => res.render("pages/module3"));
-  app.get("/Module6", (req, res) => res.render("pages/sockets"));
+  app.get("/Module6", (req, res) => res.render("pages/Sockets"));
   app.get("/cool", (request, response) => response.send(cool()));
   app.get("/times", function(request, response) {
     var result = "";
