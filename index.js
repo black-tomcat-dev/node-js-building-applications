@@ -63,6 +63,7 @@ var routes=require('./routes/route.js');
   app.get('/Module4/logout',user.logout);
   app.get("/", (req, res) => res.render("pages/index"));
   app.get("/Module1", (req, res) => res.render("pages/quotes"));
+  app.get("/Module7", (req,res) => res.render("pages/grunt"));
   app.get("/Module2/:city", function(req, res) {
     var cityLabel = "";
     var city = "";
